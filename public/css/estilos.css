@@ -1,0 +1,147 @@
+/* Estilos globales, componentes de formulario y estados visuales del sitio. */
+:root {
+  color-scheme: light;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #172033;
+  background: #f4f7fb;
+  font-synthesis: none;
+  line-height: 1.5;
+}
+
+* {
+  /* Hace que padding y bordes formen parte del ancho declarado. */
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+.contenedor {
+  /* Centra el contenido y limita su ancho para facilitar la lectura. */
+  width: min(100% - 2rem, 56rem);
+  margin-inline: auto;
+}
+
+.encabezado {
+  padding-block: 1.25rem;
+  background: #12325a;
+  color: #fff;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.navegacion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+a {
+  color: #0759a5;
+  text-underline-offset: 0.2em;
+}
+
+.encabezado a,
+.pie a {
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  /* Mantiene una indicación visible al navegar con teclado. */
+  outline: 3px solid #e99b21;
+  outline-offset: 3px;
+}
+
+main {
+  min-height: 65vh;
+  padding-block: 1.5rem 3rem;
+}
+
+.tarjeta,
+.formulario,
+.mensaje-error {
+  /* Apariencia compartida para bloques de contenido y mensajes. */
+  margin-block: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #d4dce7;
+  border-radius: 0.6rem;
+  background: #fff;
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+}
+
+.lista-reservas {
+  /* Separa visualmente cada reserva sin usar marcadores de lista. */
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.campo {
+  display: grid;
+  gap: 0.35rem;
+  margin-block: 0.9rem;
+}
+
+input,
+select,
+button {
+  min-height: 2.7rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #8794a7;
+  border-radius: 0.3rem;
+  font: inherit;
+}
+
+button,
+.boton {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: #0759a5;
+  color: #fff;
+  font: inherit;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mensaje-error {
+  /* Diferencia los errores de validación del contenido normal. */
+  border-color: #a51f2b;
+  background: #fff3f3;
+  color: #78131b;
+}
+
+.pie {
+  padding-block: 1rem;
+  background: #12325a;
+  color: #fff;
+}
+
+.pie p {
+  margin-block: 0.25rem;
+}
+
+.id-solicitud {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,33 @@
+<%# Estructura HTML compartida por las páginas y su navegación. %>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= titulo %> | Reservas de salas</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+  </head>
+  <body>
+    <header class="encabezado">
+      <div class="contenedor">
+        <h1>Reservas de salas de estudio</h1>
+      </div>
+    </header>
+    <nav class="navegacion contenedor" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+      <a href="/reservas">Ver reservas</a>
+      <a href="/reservas/nueva">Crear una reserva</a>
+    </nav>
+    <main class="contenedor">
+      <%# express-ejs-layouts inserta aquí el contenido de la vista solicitada. %>
+      <%- body %>
+    </main>
+    <footer class="pie">
+      <div class="contenedor">
+        <p>Trabajo práctico 05 · Reservas temporales en memoria</p>
+        <%# El middleware de solicitudes agrega este dato a res.locals. %>
+        <p class="id-solicitud">Solicitud: <%= solicitudId %></p>
+      </div>
+    </footer>
+  </body>
+</html>

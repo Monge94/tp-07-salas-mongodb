@@ -1,0 +1,23 @@
+<%# Lista las reservas actuales o informa cuando todavía no hay datos. %>
+<section aria-labelledby="titulo-lista">
+  <h2 id="titulo-lista"><%= seccion %></h2>
+  <p>Consultá los turnos registrados o cargá una nueva reserva.</p>
+  <p><a class="boton" href="/reservas/nueva">Nueva reserva</a></p>
+
+  <% if (reservas.length === 0) { %>
+    <%# Evita mostrar una lista vacía cuando el servicio no tiene registros. %>
+    <p class="tarjeta">Todavía no hay reservas registradas.</p>
+  <% } else { %>
+    <ul class="lista-reservas">
+      <%# Cada elemento enlaza con el detalle de su reserva. %>
+      <% reservas.forEach((reserva) => { %>
+        <li class="tarjeta">
+          <h3><a href="/reservas/<%= reserva.id %>">Reserva #<%= reserva.id %>: <%= reserva.sala %></a></h3>
+          <p><strong>Estudiante:</strong> <%= reserva.estudiante %></p>
+          <p><strong>Fecha:</strong> <%= reserva.fecha %> · <strong>Turno:</strong> <%= reserva.turno %></p>
+          <p><strong>Personas:</strong> <%= reserva.personas %></p>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</section>

@@ -1,0 +1,61 @@
+<%# Formulario de alta con errores y valores previos si la validación falla. %>
+<section>
+  <h2><%= seccion %> · Nueva reserva</h2>
+
+  <% if (errores.length > 0) { %>
+    <%# Los mensajes provienen del middleware que valida el POST. %>
+    <div class="mensaje-error" role="alert" aria-labelledby="errores-titulo">
+      <h3 id="errores-titulo">No se pudo guardar la reserva</h3>
+      <ul>
+        <% errores.forEach((error) => { %>
+          <li><%= error %></li>
+        <% }); %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form class="formulario" action="/reservas" method="post">
+    <div class="campo">
+      <label for="estudiante">Estudiante</label>
+      <input id="estudiante" name="estudiante" type="text" value="<%= formData.estudiante %>" required>
+    </div>
+    <div class="campo">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" value="<%= formData.email %>" required>
+    </div>
+    <div class="campo">
+      <label for="sala">Sala</label>
+      <select id="sala" name="sala" required>
+        <option value="">Seleccioná una sala</option>
+        <%# Mantiene visible una opción rechazada para que pueda corregirse. %>
+        <% if (formData.sala && !salasPermitidas.includes(formData.sala)) { %>
+          <option value="<%= formData.sala %>" selected><%= formData.sala %> (no permitida)</option>
+        <% } %>
+        <% salasPermitidas.forEach((sala) => { %>
+          <option value="<%= sala %>" <%= formData.sala === sala ? "selected" : "" %>><%= sala %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div class="campo">
+      <label for="fecha">Fecha</label>
+      <input id="fecha" name="fecha" type="date" value="<%= formData.fecha %>" required>
+    </div>
+    <div class="campo">
+      <label for="turno">Turno</label>
+      <select id="turno" name="turno" required>
+        <option value="">Seleccioná un turno</option>
+        <% if (formData.turno && !turnosPermitidos.includes(formData.turno)) { %>
+          <option value="<%= formData.turno %>" selected><%= formData.turno %> (no permitido)</option>
+        <% } %>
+        <% turnosPermitidos.forEach((turno) => { %>
+          <option value="<%= turno %>" <%= formData.turno === turno ? "selected" : "" %>><%= turno %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div class="campo">
+      <label for="personas">Personas (de 1 a 6)</label>
+      <input id="personas" name="personas" type="number" min="1" max="6" step="1" value="<%= formData.personas %>" required>
+    </div>
+    <button type="submit">Guardar reserva</button>
+  </form>
+</section>
